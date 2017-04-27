@@ -1,16 +1,13 @@
 version: "3"
 services:
-  ts:
-    build: .
-    image: teamspeak:latest
+  teamspeak:
+    image: marcermarc/teamspeak:latest
     volumes:
       - ./data:/mnt/teamspeak
     ports:
-      # Hostport:Containerport/Protokoll
       - 9987:9987/udp
       - 30033:30033/tcp
       - 10011:10011/tcp
       - 2010:2010/udp
       - 41144:41144/tcp
       - 2008:2008/tcp
-    #pid: "host"
