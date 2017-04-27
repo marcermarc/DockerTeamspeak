@@ -1,2 +1,2 @@
 # DockerTeamspeak
-A Docker-Teamspeak script
+A docker-teamspeak script based on alpine
