@@ -1,5 +1,5 @@
 #!/bin/sh
 if [ $DOCKER_TAG = "latest" ]
-  then docker build --build-arg VERSION=$DOCKER_TAG -t $IMAGE_NAME .
-  else docker build -t $IMAGE_NAME .
+  then docker build -t $IMAGE_NAME .
+  else docker build --build-arg VERSION=$DOCKER_TAG -t $IMAGE_NAME .
 fi
