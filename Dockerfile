@@ -19,6 +19,7 @@ RUN apk --update --no-cache --virtual=.build-dependencies add curl \
   && mv /opt/teamspeak3-server_* /opt/teamspeak \
   && rm -rf /tmp/ts \
   && apk del --no-cache .build-dependencies \
+  && apk --update --no-chache add ca-certificates \
   && adduser -h /opt/teamspeak -S -D teamspeak \
   && chown -R teamspeak /opt/teamspeak
 
