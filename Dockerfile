@@ -52,4 +52,4 @@ ENV LD_LIBRARY_PATH="/opt/teamspeak"
 # ------------------------------------------
 # Start the server with the created ini-file
 # ------------------------------------------
-ENTRYPOINT ["/opt/teamspeak/ts3server", "dbsqlpath=/opt/teamspeak/sql/"]
+ENTRYPOINT ["/opt/teamspeak/ts3server", "dbsqlpath=/opt/teamspeak/sql/", "license_accepted=1"]
