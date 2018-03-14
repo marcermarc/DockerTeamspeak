@@ -5,7 +5,7 @@ LABEL maintainer "docker@marcermarc.de"
 # ---------------------
 # Set Teamspeak Version
 # ---------------------
-ARG VERSION=3.1.0
+ARG VERSION=3.1.1
 
 # -------------------------------------
 # Download teamspeak
