@@ -14,7 +14,7 @@ ARG VERSION=3.6.1
 # Remove unnecessary files
 # -------------------------------------
 RUN apk --update --no-cache add curl \
-  && mkdir /tmp/ts /opt \
+  && mkdir /tmp/ts \
   && curl -o /tmp/ts/ts.tar.bz2 http://files.teamspeak-services.com/releases/server/${VERSION}/teamspeak3-server_linux_alpine-${VERSION}.tar.bz2 \
   && tar xjf /tmp/ts/ts.tar.bz2 -C /opt \
   && mv /opt/teamspeak3-server_* /opt/teamspeak \
