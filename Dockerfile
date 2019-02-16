@@ -11,17 +11,24 @@ ARG VERSION=3.6.1
 # -------------------------------------
 # Download teamspeak
 # Unpack teamspeak
+# Remove unnecessary files
 # -------------------------------------
 RUN apk --update --no-cache add curl \
   && mkdir /tmp/ts /opt \
-  && curl -o /tmp/ts/ts.tar.bz2 http://dl.4players.de/ts/releases/${VERSION}/teamspeak3-server_linux_amd64-${VERSION}.tar.bz2 \
+  && curl -o /tmp/ts/ts.tar.bz2 http://files.teamspeak-services.com/releases/server/${VERSION}/teamspeak3-server_linux_alpine-${VERSION}.tar.bz2 \
   && tar xjf /tmp/ts/ts.tar.bz2 -C /opt \
-  && mv /opt/teamspeak3-server_* /opt/teamspeak
+  && mv /opt/teamspeak3-server_* /opt/teamspeak \
+  && rm -r /opt/teamspeak/doc \
+		   /opt/teamspeak/serverquerydocs \
+		   /opt/teamspeak/tsdns \
+		   /opt/teamspeak/redist \
+		   /opt/teamspeak/CHANGELOG \
+		   /opt/teamspeak/LICENSE*
 
 #######
 # Run #
 #######
-FROM frolvlad/alpine-glibc
+FROM alpine
 
 LABEL maintainer "docker@marcermarc.de"
 
@@ -33,7 +40,7 @@ COPY --from=download /opt/teamspeak /opt/teamspeak/
 # -------------------------------------
 # Add user teamspeak
 # -------------------------------------
-RUN apk --update --no-chache add ca-certificates \
+RUN apk --update --no-cache add libstdc++ ca-certificates \
   && adduser -h /opt/teamspeak -S -D teamspeak \
   && chown -R teamspeak /opt/teamspeak
 
