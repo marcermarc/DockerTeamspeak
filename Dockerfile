@@ -6,7 +6,7 @@ FROM alpine as download
 # --------------
 # Define version
 # --------------
-ARG VERSION=3.8.0
+ARG VERSION=3.9.1
 
 # -------------------------------------
 # Download teamspeak
